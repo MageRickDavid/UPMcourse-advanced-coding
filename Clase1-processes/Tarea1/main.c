@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 03:58:48 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/06 03:58:51 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/09 02:23:19 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
  #include <unistd.h>
  #include <stdio.h>
 
+ /**
+  * @brief This function displays a string into the standard output
+  * @param {char*} str: The string to get displayed.
+  * @return {void}
+  */
  void ft_putstr(char *str)
  {
 	char	*copy;

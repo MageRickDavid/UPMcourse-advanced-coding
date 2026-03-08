@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 07:46:53 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/06 09:46:33 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/09 02:20:41 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
-
+/**
+ * @brief This function goes into the address of a memory 
+ * integer and changes its value.
+ * @param {int*} z: The pointer to the memory where the integer will be changed.
+ * @param {int} new_number: The new number to put inside the address
+ */
 void change_number(int *z, int new_number)
 {
     *z = new_number;
@@ -24,6 +29,10 @@ void change_number(int *z, int new_number)
     printf("The new value is: %d and the address is: %p\n", *z, z);
 }
 
+/**
+ * @brief This program creates 2 children processed to change a value created by the parent
+ * 
+ */
 int main(void)
 {
     int     z;

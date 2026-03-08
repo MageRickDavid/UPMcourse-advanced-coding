@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun.c                                              :+:      :+:    :+:   */
+/*   helpers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 03:58:55 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/09 02:22:08 by rortiz           ###   ########.fr       */
+/*   Created: 2026/03/08 16:34:36 by rortiz            #+#    #+#             */
+/*   Updated: 2026/03/08 19:08:15 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief This program gets the division of an integer divided by 3
- * @param {int} x: The integer to which get the division.
- * @return {int} The integer divided by 3
- */
-float	div(int x)
-{
-	return (x/3);
-}
+#ifndef HELPERS_H
+# define HELPERS_H
+
+int		ft_strlen(char *str);
+int		generate_random_number(int max_number, int min_number);
+void	sending_number(int fd, int number);
+void	files_closer(int fd, char *name);
+char	*recieved_number(int fd);
+
+#endif

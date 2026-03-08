@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 04:04:39 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/06 07:14:13 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/09 02:17:30 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <pwd.h>
 #include <grp.h>
 
+/**
+ * @brief This function is used to get information from the system,
+ * We aim to display the pid and the group it belongs to
+ * @param {void}
+ * @return {void}
+ */
 void	get_info(void)
 {
 	uid_t			my_id;
