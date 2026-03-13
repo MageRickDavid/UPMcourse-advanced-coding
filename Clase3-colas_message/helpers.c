@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 02:18:49 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/14 04:19:47 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/14 06:40:27 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_LENGTH 60
-
-struct msgbuf {
-		long mtype;
-		char mtext[MAX_LENGTH];
-	} message;
+#include "helpers.h"
 
 /**
  * @brief Creates or finds a message queue based on its key.
  * @param {key_t} key: The key of the message queue
- * @return {int} msg_id upon successful creation, -1 otherwise
+ * @return {int} message id upon successful creation, -1 otherwise
  */
 int	message_creator_finder(key_t key)
 {
 	int msg_id;
 	
-	msg_id = msgget(key, IPC_CREAT|0666);
+	msg_id = msgget(key, IPC_CREAT | 0666);
 	if (msg_id < 0)
 	{
 		perror("Error creating the message\n");
@@ -52,11 +46,11 @@ int	message_creator_finder(key_t key)
  */
 int	sending_message(int msg_id, char *str, long type)
 {
-	int	signal;
+	int				signal;
+	message_queue	message;
 	
 	message.mtype = type;
-	strncpy(message.mtext, str, MAX_LENGTH - 1);
-	messa
+	strcpy(message.mtext, str);
 	signal = msgsnd(msg_id, &message, strlen(message.mtext) + 1, 0);
 	if (signal != 0)
 	{
@@ -70,13 +64,14 @@ int	sending_message(int msg_id, char *str, long type)
  * @brief Receives a message
  * @param {int} msg_id: The id of the message queue 
  * from where we will receive the message.
- * @param {char*} buffer: Point towards the space of memory where the message will be stored, needs to be freed.
+ * @param {char[MAX_LENGTH]} buffer: Point towards the space of memory where the message will be stored.
  * @param {long} type: An integer for designating the type of message we are receiving
  * @return {int} The length of the message if received successfully, -1 otherwise
  */
 int	receiving_message(int msg_id, long type, char buffer[MAX_LENGTH])
 {
-	ssize_t message_len;
+	ssize_t			message_len;
+	message_queue	message;
 	
 	message_len = msgrcv(msg_id, &message, MAX_LENGTH, type, 0);
 	if (message_len < 0)
