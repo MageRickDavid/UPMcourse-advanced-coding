@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 02:11:10 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/14 07:13:23 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/14 10:05:12 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void fathers_messenger(char *message)
 	printf("The Father sent this message: %s\n", message);
 }
 
-int	main(int arg, char **argv)
+/*int	main(int arg, char **argv)
 {
 	pid_t	pid_child;
 	int		status;
@@ -93,7 +93,7 @@ int	main(int arg, char **argv)
 	waitpid(pid_child, &status, 0);
 	printf("All processes finished\n");
 	exit(EXIT_FAILURE);
-}
+}*/
 
 
 

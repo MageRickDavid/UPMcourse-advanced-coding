@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 02:18:49 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/14 06:40:27 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/14 07:24:48 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,15 @@ int	close_queue(int msg_id)
 		exit(EXIT_FAILURE);
 	}
 	return (ret);
+}
+
+/**
+ * @brief Generates a random number in between a max and minimum range
+ * @param {int} max_number: The maximum number in the range.
+ * @param {int} min_number: The minimum number in the range.
+ * @return {int} The random number.
+ */
+int	generate_random_number(int max_number, int min_number)
+{
+	return ((rand() % ((max_number - min_number) + 1)) + min_number);
 }
