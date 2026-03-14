@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 07:21:58 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/14 10:08:17 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/03/14 10:15:22 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,11 @@ int	main(int arg, char **argv)
 	int		msg_id;
 	int		number_to_guess;
 	int		child_status;
+	int		closing_flag;
 	
 	if (arg != 2)
 	{
-		perror("Please input only one agument");
+		perror("Please input only one argument");
 		exit(EXIT_FAILURE);
 	}
 	number_to_guess = atoi(argv[1]);
@@ -127,6 +128,12 @@ int	main(int arg, char **argv)
 			printf("The first number to be sent is: %d\n", *first_number);
 			fathers_guesser(msg_id, *first_number);
 			waitpid(child_pid, &child_status,0);
+			closing_flag = close_queue(msg_id);
+			if (closing_flag < 0)
+			{
+				perror("Error while closing the message queue");
+				exit(EXIT_FAILURE);	
+			}
 			exit(EXIT_SUCCESS);
 			break;
 	}
