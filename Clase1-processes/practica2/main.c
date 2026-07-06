@@ -6,12 +6,13 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 07:46:53 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/09 02:20:41 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/07/06 09:19:53 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/types.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>

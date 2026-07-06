@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 08:21:28 by rortiz            #+#    #+#             */
-/*   Updated: 2026/03/28 10:06:55 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/07/06 19:09:57 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void process1_guesser(key_t key, int max, int min)
         else if (receiving_message(memory_id, GUESSER) == 3)
         {
             printf("Guesser was told by other that it won!!!\n");
-            return;
+            return ;
         }   
     }
 }
@@ -75,6 +75,7 @@ int main(int args, char **argv)
     pid_t         child;
     unsigned char number_to_guess;
     int           status;
+    int           memory_id;
     
     if (args != 2)
     {
@@ -82,8 +83,8 @@ int main(int args, char **argv)
         exit(EXIT_FAILURE);
     }
     number_to_guess = atoi(argv[1]);
+    memory_id = memory_creator_finder(CLAVE_MESSSAGE, sizeof(NUMBER_MESSAGE));
     child = fork();
-
     if (child == 0)
     {
         process2_other(CLAVE_MESSSAGE, number_to_guess);
@@ -91,5 +92,10 @@ int main(int args, char **argv)
     }
     process1_guesser(CLAVE_MESSSAGE, 100, 0);
     waitpid(child, &status, 0);
+    if (shmctl(memory_id, IPC_RMID, NULL) == -1)
+	{
+		perror("shmctl IPC_RMID");
+		exit(EXIT_FAILURE);
+	}
     exit(EXIT_SUCCESS);
 }
