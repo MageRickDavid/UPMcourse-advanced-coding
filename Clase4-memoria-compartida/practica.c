@@ -6,7 +6,7 @@
 /*   By: rortiz <rortiz@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 08:21:28 by rortiz            #+#    #+#             */
-/*   Updated: 2026/07/06 19:09:57 by rortiz           ###   ########.fr       */
+/*   Updated: 2026/07/06 20:32:20 by rortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void process2_other(key_t key, unsigned char number_to_guess)
             sending_message(memory_id, 2, OTHER, GUESSER);
         else if (receiving_message(memory_id, OTHER) == number_to_guess)
         {
-            printf("OTHER ACKNOWLEDGES GUESSER WON");
+            printf("OTHER ACKNOWLEDGES GUESSER WON\n");
             sending_message(memory_id, 3, OTHER, GUESSER);
             return ;
         }
